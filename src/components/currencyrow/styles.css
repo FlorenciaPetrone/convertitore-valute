@@ -1,0 +1,59 @@
+.import-container {
+  display: flex;
+}
+
+.input {
+  width: 200px;
+  height: 30px;
+  font-size: 25px;
+  line-height: 18px;
+  font-weight: 500;
+  color: #0f0f0f;
+  background-color: #fff;
+  background-clip: padding-box;
+  margin-top: 5px;
+  margin-right: 70px;
+  border: 1px solid;
+  border-radius: 1em;
+  outline: 0 none !important;
+  padding: 0.3rem 0.8rem;
+}
+
+.select {
+  width: 200px;
+  height: 40px;
+  font-size: 25px;
+  background-clip: padding-box;
+  margin-top: 5px;
+  border: 1px solid;
+  border-radius: 1em;
+  outline: 0 none !important;
+  padding: 0.3rem 0.8rem;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 600px) {
+  .input {
+    width: 90px;
+    font-size: 12px;
+    padding: 0.2rem 0.8rem;
+    margin-right: 40px;
+  }
+
+  .select {
+    width: 80px;
+    font-size: 13px;
+  }
+}
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+  .input {
+    width: 160px;
+    font-size: 15px;
+    padding: 0.2rem 0.8rem;
+    margin-right: 40px;
+  }
+
+  .select {
+    width: 160px;
+    font-size: 15px;
+  }
+}

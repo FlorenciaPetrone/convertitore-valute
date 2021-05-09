@@ -1,0 +1,12 @@
+.footer-container {
+  background-color: beige;
+  min-height: 80px;
+  bottom: 0;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-container h1 {
+  text-align: center;
+}

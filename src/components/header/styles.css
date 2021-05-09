@@ -1,0 +1,36 @@
+.header-container {
+  background-color: cadetblue;
+  min-height: 80px;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  margin: 5px 10px;
+  padding: 10px;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.nav-link:focus {
+  color: white;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 700px) {
+  .nav-link {
+    font-size: 14px;
+    padding: 5px;
+  }
+  .nav-link:focus {
+    color: white;
+  }
+}
