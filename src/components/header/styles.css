@@ -1,5 +1,9 @@
 .header-container {
-  background-color: cadetblue;
+  background: linear-gradient(
+    163deg,
+    rgba(231, 113, 125, 1) 46%,
+    rgba(238, 218, 197, 0.76234243697479) 100%
+  );
   min-height: 80px;
   overflow: visible;
   display: flex;
@@ -26,6 +30,9 @@
 }
 
 @media only screen and (min-width: 300px) and (max-width: 700px) {
+  .header-container {
+    min-height: 100px;
+  }
   .nav-link {
     font-size: 14px;
     padding: 5px;

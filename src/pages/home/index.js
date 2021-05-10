@@ -1,19 +1,22 @@
-//React
 import React, { useState, useEffect } from "react";
-//Components
+import { getExchangeRate } from "../../utils/services";
+
 import CurrencyRow from "../../components/currencyrow";
-//Axios
-import axios from "axios";
-//Styles
+import { currencies } from "../../utils/currencies";
+
 import "./styles.css";
 
-const API_KEY = "188981ba909ccbb6a1d014017e6aea03";
-const URL = `http://data.fixer.io/api/latest?access_key=${API_KEY}`;
+//Fixer.io API
+//const API_KEY = "188981ba909ccbb6a1d014017e6aea03";
+//const URL = `http://data.fixer.io/api/latest?access_key=${API_KEY}`;
+
+//New API /www.currencyconverterapi.com/
+const BASE_URL = `https://free.currconv.com/api/v7/convert`;
+const API_KEY = "ab9c0de4732a870847c6";
 
 const Home = () => {
-  const [currencyOptions, setCurrencyOptions] = useState([]);
-  const [baseCurrency, setBaseCurrency] = useState();
-  const [targetCurrency, setTargetCurrency] = useState();
+  const [baseCurrency, setBaseCurrency] = useState("EUR");
+  const [targetCurrency, setTargetCurrency] = useState("USD");
   const [exchangeRate, setExchangeRate] = useState();
   const [amount, setAmount] = useState(1);
   const [baseCurrencyAmount, setBaseCurrencyAmount] = useState(true);
@@ -23,30 +26,16 @@ const Home = () => {
     baseAmount = amount;
     targetAmount = amount * exchangeRate;
   } else {
-    targetAmount = amount;
     baseAmount = amount / exchangeRate;
+    targetAmount = amount;
   }
 
   useEffect(() => {
-    async function getCurrency() {
-      const response = await axios.get(URL);
-      const data = response.data;
-      const firstCurrency = Object.keys(data.rates)[0];
-      setCurrencyOptions([...Object.keys(data.rates)]);
-      setBaseCurrency(data.base);
-      setTargetCurrency(firstCurrency);
-      setExchangeRate(data.rates[firstCurrency]);
-    }
-    getCurrency();
-  }, []);
-
-  useEffect(() => {
     async function changeValute() {
-      const response = await axios.get(
-        `${URL}&base=${baseCurrency}&symbol=${targetCurrency}`
-      );
-      const data = response.data;
-      setExchangeRate(data.rates[targetCurrency]);
+      const currencyExchange = `${baseCurrency}_${targetCurrency}`;
+      const url = `${BASE_URL}?q=${currencyExchange}&compact=ultra&apiKey=${API_KEY}`;
+      const data = await getExchangeRate(url);
+      setExchangeRate(data[currencyExchange]);
     }
     changeValute();
   }, [baseCurrency, targetCurrency]);
@@ -71,7 +60,7 @@ const Home = () => {
           <h5 className="text-2">Seleziona valute</h5>
         </div>
         <CurrencyRow
-          currencyOptions={currencyOptions}
+          currencyOptions={currencies}
           selectedCurrency={baseCurrency}
           onChangeCurrency={(e) => setBaseCurrency(e.target.value)}
           onChangeAmount={handleBaseAmountChange}
@@ -79,7 +68,7 @@ const Home = () => {
         />
         <br />
         <CurrencyRow
-          currencyOptions={currencyOptions}
+          currencyOptions={currencies}
           selectedCurrency={targetCurrency}
           onChangeCurrency={(e) => setTargetCurrency(e.target.value)}
           onChangeAmount={handleTargetAmountChange}

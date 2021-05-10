@@ -1,14 +1,13 @@
-//React
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-//Components
+
 import Header from "./components/header";
 import Footer from "./components/footer";
-//Pages
+
 import Home from "./pages/home";
 import ChiSiamo from "./pages/chisiamo";
 import Contatto from "./pages/contatto";
-//Styles
+
 import "./styles.css";
 
 const App = () => {

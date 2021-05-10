@@ -1,5 +1,9 @@
 .footer-container {
-  background-color: beige;
+  background: linear-gradient(
+    126deg,
+    rgba(238, 218, 197, 1) 9%,
+    rgba(231, 113, 125, 1) 48%
+  );
   min-height: 80px;
   bottom: 0;
   overflow: visible;
@@ -7,6 +11,15 @@
   justify-content: center;
 }
 
-.footer-container h1 {
+.footer-container p {
+  margin-top: 30px;
   text-align: center;
+}
+@media only screen and (min-width: 300px) and (max-width: 700px) {
+  .footer-container {
+    min-height: 100px;
+  }
+  .footer-container p {
+    font-size: 14px;
+  }
 }

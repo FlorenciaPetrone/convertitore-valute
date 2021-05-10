@@ -1,6 +1,5 @@
-//React
 import React from "react";
-//Styles
+
 import "./styles.css";
 
 const ChiSiamo = () => {
