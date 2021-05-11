@@ -19,11 +19,17 @@ const Contatto = () => {
     e.preventDefault();
     console.log(userForm);
     updateUserData(userForm);
+    setUserForm({
+      firstName: "",
+      lastName: "",
+      email: "",
+      message: "",
+    });
   };
 
   return (
     <div className="contact-container">
-      <form className="form-container" onSubmit={submitHandler}>
+      <form id="form" className="form-container" onSubmit={submitHandler}>
         <h1>Contattaci</h1>
         <div>
           <span>
@@ -62,9 +68,7 @@ const Contatto = () => {
             />
           </span>
           <span className="submit">
-            <button type="submit" type="reset">
-              Inviare
-            </button>
+            <button type="submit">Inviare</button>
           </span>
         </div>
       </form>
